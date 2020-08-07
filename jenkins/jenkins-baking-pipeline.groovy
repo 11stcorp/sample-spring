@@ -5,6 +5,8 @@ def REPOSITORY_NAME="aegis-dashboard"
 def PROJECT_KEY = "STINFRA"
 def DOCKER_REGISTORY_URL = 'dev-registry.11stcorp.com'
 
+def REGISTRY = '446804614856.dkr.ecr.ap-northeast-2.amazonaws.com/11st-registry'
+
 podTemplate(label:LABEL,
         containers: [
                 containerTemplate(name: 'java', image: 'java:8-jdk', ttyEnabled: true, command: 'cat',
@@ -41,18 +43,22 @@ podTemplate(label:LABEL,
 
         stage('create image') {
             container('docker') {
-                withCredentials([[$class: 'UsernamePasswordMultiBinding',
-                                  credentialsId: 'dev-docker-registry',
-                                  usernameVariable: 'DOCKER_HUB_USER',
-                                  passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
-                    sh """
-                        pwd
-                        whoami
-                        docker login ${DOCKER_REGISTORY_URL} -u ${DOCKER_HUB_USER} -p '${DOCKER_HUB_PASSWORD}'
-                        docker build -t '${DOCKER_REGISTORY_URL}/11st/${REPOSITORY_NAME}:${TAG_NAME}' .
-                        docker push '${DOCKER_REGISTORY_URL}/11st/${REPOSITORY_NAME}:${TAG_NAME}'
-                    """
-                }
+                sh """
+                    docker build -t '${REGISTRY}/sample-spring:v0.0.1' .
+                    docker push '${REGISTRY}/sample-spring:v0.0.1'
+                """
+//                withCredentials([[$class: 'UsernamePasswordMultiBinding',
+//                                  credentialsId: 'dev-docker-registry',
+//                                  usernameVariable: 'DOCKER_HUB_USER',
+//                                  passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
+//                    sh """
+//                        pwd
+//                        whoami
+//                        docker login ${DOCKER_REGISTORY_URL} -u ${DOCKER_HUB_USER} -p '${DOCKER_HUB_PASSWORD}'
+//                        docker build -t '${DOCKER_REGISTORY_URL}/11st/${REPOSITORY_NAME}:${TAG_NAME}' .
+//                        docker push '${DOCKER_REGISTORY_URL}/11st/${REPOSITORY_NAME}:${TAG_NAME}'
+//                    """
+//                }
             }
         }
     }
