@@ -34,7 +34,7 @@ podTemplate(label:LABEL,
         stage('build') {
             container('maven') {
                 sh 'pwd'
-                sh 'mvn clean; install'
+                sh 'mvn clean install'
 //                sh './gradlew -x test clean build'
             }
         }
