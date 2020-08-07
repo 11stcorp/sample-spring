@@ -43,10 +43,12 @@ podTemplate(label:LABEL,
 
         stage('create image') {
             container('docker') {
-                sh """
-                    docker build -t '${REGISTRY}/sample-spring:v0.0.1' . --network=host
-                    docker push '${REGISTRY}/sample-spring:v0.0.1'
-                """
+                withCredentials([string(credentialsId: 'ecr-credential')]) {
+                    sh """
+                        docker build -t '${REGISTRY}/sample-spring:v0.0.1' . --network=host
+                        docker push '${REGISTRY}/sample-spring:v0.0.1'
+                    """
+                }
 //                withCredentials([[$class: 'UsernamePasswordMultiBinding',
 //                                  credentialsId: 'dev-docker-registry',
 //                                  usernameVariable: 'DOCKER_HUB_USER',
