@@ -22,11 +22,12 @@ podTemplate(label:LABEL,
     node(LABEL) {
 
         stage('checkout') {
-            checkout([$class: 'GitSCM',
-                      branches: [[name: BRANCH_VERSION]],
-                      doGenerateSubmoduleConfigurations: false, extensions: [],
-                      submoduleCfg: [],
-                      userRemoteConfigs: [[url: "http://aegis@bitbucket.11stcorp.com/scm/${PROJECT_KEY}/${REPOSITORY_NAME}.git", credentialsId: 'git-common-user']]])
+            git( url: "https://github.com/11stcorp/sample-spring.git", branch: "master")
+//            checkout([$class: 'GitSCM',
+//                      branches: [[name: BRANCH_VERSION]],
+//                      doGenerateSubmoduleConfigurations: false, extensions: [],
+//                      submoduleCfg: [],
+//                      userRemoteConfigs: [[url: "http://aegis@bitbucket.11stcorp.com/scm/${PROJECT_KEY}/${REPOSITORY_NAME}.git", credentialsId: 'git-common-user']]])
         }
 
         stage('build') {
