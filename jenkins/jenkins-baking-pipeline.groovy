@@ -13,7 +13,8 @@ podTemplate(label:LABEL,
                                 envVar(key: 'JVM_HEAP_MIN', value: '-Xmx512m'),
                                 envVar(key: 'JVM_HEAP_MAX', value: '-Xmx512m')
                         ]),
-                containerTemplate(name: 'docker', image: 'docker', ttyEnabled: true, command: 'cat')
+                containerTemplate(name: 'docker', image: 'docker', ttyEnabled: true, command: 'cat'),
+                containerTemplate(name: 'maven', image: 'maven:3.5.4-jdk-8-alpine', command: 'cat', ttyEnabled: true)
         ],
         volumes: [
                 hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock'),
@@ -31,7 +32,7 @@ podTemplate(label:LABEL,
         }
 
         stage('build') {
-            container('java') {
+            container('maven') {
                 sh 'pwd'
                 sh 'mvn clean; install'
 //                sh './gradlew -x test clean build'
