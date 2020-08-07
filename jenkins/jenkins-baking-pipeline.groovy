@@ -16,8 +16,7 @@ podTemplate(label:LABEL,
                                 envVar(key: 'JVM_HEAP_MAX', value: '-Xmx512m')
                         ]),
                 containerTemplate(name: 'docker', image: 'docker', ttyEnabled: true, command: 'cat'),
-                containerTemplate(name: 'maven', image: 'maven:3.5.4-jdk-8-alpine', command: 'cat', ttyEnabled: true),
-                containerTemplate(name: 'builder', image: 'opsnowtools/valve-builder:v0.2.2', command: 'cat', ttyEnabled: true)
+                containerTemplate(name: 'maven', image: 'maven:3.5.4-jdk-8-alpine', command: 'cat', ttyEnabled: true)
         ],
         volumes: [
                 hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock'),
@@ -43,9 +42,9 @@ podTemplate(label:LABEL,
         }
 
         stage('create image') {
-            container('builder') {
+            container('docker') {
                 sh """
-                    docker build -t '${REGISTRY}/sample-spring:v0.0.1' .
+                    docker build -t '${REGISTRY}/sample-spring:v0.0.1' . --network=host
                     docker push '${REGISTRY}/sample-spring:v0.0.1'
                 """
 //                withCredentials([[$class: 'UsernamePasswordMultiBinding',
