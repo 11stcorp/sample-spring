@@ -5,7 +5,8 @@ def REPOSITORY_NAME="aegis-dashboard"
 def PROJECT_KEY = "STINFRA"
 def DOCKER_REGISTORY_URL = 'dev-registry.11stcorp.com'
 
-def REGISTRY = '446804614856.dkr.ecr.ap-northeast-2.amazonaws.com/11st-registry'
+def ECR_REGISTRY = '446804614856.dkr.ecr.ap-northeast-2.amazonaws.com'
+def ECR_REPO = '11st-registry'
 
 podTemplate(label:LABEL,
         containers: [
@@ -46,12 +47,9 @@ podTemplate(label:LABEL,
                 sh 'rm  ~/.dockercfg || true'
                 sh 'rm ~/.docker/config.json || true'
 
-                docker.withRegistry("https://446804614856.dkr.ecr.ap-northeast-2.amazonaws.com", "ecr:ap-northeast-2:ecr-credential") {
-                    // def image = docker.build('${REGISTRY}/sample-spring:v0.0.1')
-                    def image = docker.build('11st-registry:sample-spring-v0.0.1')
+                docker.withRegistry("https://" + ECR_REGISTRY, "ecr:ap-northeast-2:ecr-credential") {
+                    def image = docker.build(ECR_REPO + ':sample-spring-v0.0.2')
                     image.push()
-//                    docker build -t '${REGISTRY}/sample-spring:v0.0.1' . --network=host
-//                    docker push '${REGISTRY}/sample-spring:v0.0.1'
                 }
 //                withCredentials([[$class: 'UsernamePasswordMultiBinding',
 //                                  credentialsId: 'dev-docker-registry',
