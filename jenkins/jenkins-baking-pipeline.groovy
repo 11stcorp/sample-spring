@@ -46,7 +46,8 @@ podTemplate(label:LABEL,
                 sh 'rm  ~/.dockercfg || true'
                 sh 'rm ~/.docker/config.json || true'
 
-                docker.withRegistry("https://" + REGISTRY, "ecr:ap-northeast-2:ecr-credential") {
+                docker.withRegistry("https://446804614856.dkr.ecr.ap-northeast-2.amazonaws.com", "ecr:ap-northeast-2:ecr-credential") {
+                    // def image = docker.build('${REGISTRY}/sample-spring:v0.0.1')
                     def image = docker.build('${REGISTRY}/sample-spring:v0.0.1')
                     image.push()
 //                    docker build -t '${REGISTRY}/sample-spring:v0.0.1' . --network=host
