@@ -48,7 +48,7 @@ podTemplate(label:LABEL,
 
                 docker.withRegistry("https://446804614856.dkr.ecr.ap-northeast-2.amazonaws.com", "ecr:ap-northeast-2:ecr-credential") {
                     // def image = docker.build('${REGISTRY}/sample-spring:v0.0.1')
-                    def image = docker.build('sample-spring:v0.0.1')
+                    def image = docker.build('11st-registry/sample-spring:v0.0.1')
                     image.push()
 //                    docker build -t '${REGISTRY}/sample-spring:v0.0.1' . --network=host
 //                    docker push '${REGISTRY}/sample-spring:v0.0.1'
