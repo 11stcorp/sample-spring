@@ -36,18 +36,21 @@ podTemplate(label:LABEL,
         stage('build') {
             container('maven') {
                 sh 'pwd'
-                sh 'mvn clean install'
-//                sh './gradlew -x test clean build'
+//                sh 'mvn clean install'
             }
         }
 
         stage('create image') {
             container('docker') {
-                withCredentials([string(credentialsId: 'ecr-credential')]) {
-                    sh """
-                        docker build -t '${REGISTRY}/sample-spring:v0.0.1' . --network=host
-                        docker push '${REGISTRY}/sample-spring:v0.0.1'
-                    """
+                //cleanup current user docker credentials
+                sh 'rm  ~/.dockercfg || true'
+                sh 'rm ~/.docker/config.json || true'
+
+                docker.withRegistry("https://" + REGISTRY, "ecr:ap-northeast-2:ecr-credential") {
+                    def image = docker.build('${REGISTRY}/sample-spring:v0.0.1')
+                    image.push()
+//                    docker build -t '${REGISTRY}/sample-spring:v0.0.1' . --network=host
+//                    docker push '${REGISTRY}/sample-spring:v0.0.1'
                 }
 //                withCredentials([[$class: 'UsernamePasswordMultiBinding',
 //                                  credentialsId: 'dev-docker-registry',
