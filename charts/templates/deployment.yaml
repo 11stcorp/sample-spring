@@ -21,7 +21,6 @@ spec:
       labels:
         app.kubernetes.io/name: {{ include "11st-backoffice.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
-        app.kubernetes.io/timestamp: {{ .Release.Time.Seconds | quote }}
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:

@@ -8,9 +8,9 @@ replicaCount: 1
 environment: dev
 
 image:
-  repository: dev-registry.11stcorp.com/11st
-  imageName: aegis-dashboard
-  tag: MPINNER-8272
+  repository: 446804614856.dkr.ecr.ap-northeast-2.amazonaws.com
+  imageName: 11st-registry
+  tag: sample-spring-v0.0.2
   pullPolicy: Always
 
 imagePullSecrets: []
@@ -32,6 +32,7 @@ env:
 service:
   enabled: true
   type: ClusterIP
+  port: 8080
   ports:
     - port: 8080
       targetPort: http
@@ -44,11 +45,11 @@ service:
 
 ingress:
   enabled: true
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
+  annotations:
+    kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: dev.test.11stcorp.com
+    - host: sample-spring.tool.k8s.11stdev.io
       paths:
         - path: /
 
