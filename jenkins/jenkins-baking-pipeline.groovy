@@ -11,6 +11,7 @@ def ECR_REPO = '11st-registry'
 podTemplate(label:LABEL,
         containers: [
                 containerTemplate(name: 'java', image: 'java:8-jdk', ttyEnabled: true, command: 'cat',
+                        resourceRequestMemory: '10240Mi',
                         envVars: [
                                 envVar(key: 'GRADLE_OPTS', value: '-Xmx512m'),
                                 envVar(key: 'JVM_HEAP_MIN', value: '-Xmx512m'),
