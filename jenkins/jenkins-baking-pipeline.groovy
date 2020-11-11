@@ -1,8 +1,8 @@
 def LABEL = "jenkins-baking-slave-${UUID.randomUUID().toString()}"
 def TAG_NAME="${params.tagName}"
 def BRANCH_VERSION="${params.branchName}"
-// def REPOSITORY_NAME="aegis-dashboard"
-def PROJECT_KEY = "STINFRA"
+def REPOSITORY_NAME="${params.repositoryName}"
+def PROJECT_KEY = "cloud"
 def DOCKER_REGISTORY_URL = 'dev-registry.11stcorp.com'
 
 def CODE_BUILD_PROJECT_NAME = "sample-spring"
@@ -29,12 +29,12 @@ podTemplate(label:LABEL,
 
         stage('checkout') {
             // git( url: "https://github.com/11stcorp/sample-spring.git", branch: "master")
-            git( url: "http://aegis@bitbucket.11stcorp.com/scm/cloud/sample-spring.git", branch: "master")
-//            checkout([$class: 'GitSCM',
-//                      branches: [[name: BRANCH_VERSION]],
-//                      doGenerateSubmoduleConfigurations: false, extensions: [],
-//                      submoduleCfg: [],
-//                      userRemoteConfigs: [[url: "http://aegis@bitbucket.11stcorp.com/scm/${PROJECT_KEY}/${REPOSITORY_NAME}.git", credentialsId: 'git-common-user']]])
+            // git( url: "http://aegis@bitbucket.11stcorp.com/scm/cloud/sample-spring.git", branch: "master")
+           checkout([$class: 'GitSCM',
+                     branches: [[name: BRANCH_VERSION]],
+                     doGenerateSubmoduleConfigurations: false, extensions: [],
+                     submoduleCfg: [],
+                     userRemoteConfigs: [[url: "http://aegis@bitbucket.11stcorp.com/scm/${PROJECT_KEY}/${REPOSITORY_NAME}.git", credentialsId: 'git-common-user']]])
         }
 
         stage('Build') {
