@@ -43,36 +43,5 @@ podTemplate(label:LABEL,
                     envVariables: "[ { TAG_NAME, ${TAG_NAME} }]"
         }
 
-        // stage('build') {
-        //     container('maven') {
-        //         sh 'pwd'
-        //         sh 'mvn clean install'
-        //     }
-        // }
-
-        // stage('create image') {
-        //     container('docker') {
-        //         //cleanup current user docker credentials
-        //         sh 'rm  ~/.dockercfg || true'
-        //         sh 'rm ~/.docker/config.json || true'
-
-        //         docker.withRegistry("https://" + ECR_REGISTRY, "ecr:ap-northeast-2:ecr-credential") {
-        //             def image = docker.build(ECR_REPO + ':sample-spring-v0.0.2')
-        //             image.push()
-        //         }
-//                withCredentials([[$class: 'UsernamePasswordMultiBinding',
-//                                  credentialsId: 'dev-docker-registry',
-//                                  usernameVariable: 'DOCKER_HUB_USER',
-//                                  passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
-//                    sh """
-//                        pwd
-//                        whoami
-//                        docker login ${DOCKER_REGISTORY_URL} -u ${DOCKER_HUB_USER} -p '${DOCKER_HUB_PASSWORD}'
-//                        docker build -t '${DOCKER_REGISTORY_URL}/11st/${REPOSITORY_NAME}:${TAG_NAME}' .
-//                        docker push '${DOCKER_REGISTORY_URL}/11st/${REPOSITORY_NAME}:${TAG_NAME}'
-//                    """
-//                }
-            }
-        }
     }
 }
