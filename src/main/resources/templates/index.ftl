@@ -12,7 +12,7 @@
 <main role="main">
     <section class="jumbotron text-center">
         <div class="container">
-            <h1><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fspring.io%2Fprojects%2Fspring-boot&psig=AOvVaw1bTcqbQDSu7hC4RGePSFgj&ust=1596790838890000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMiP28ebhusCFQAAAAAdAAAAABAD"></h1>
+            <h1><img src="https://spring.io/images/OG-Spring.png"></h1>
             <h3>${host}</h3>
             <p>${date}</p>
             <p>${message}</p>

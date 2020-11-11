@@ -42,6 +42,5 @@ podTemplate(label:LABEL,
                     projectName: "${CODE_BUILD_PROJECT_NAME}", region: 'ap-northeast-2',
                     envVariables: "[ { TAG_NAME, ${TAG_NAME} }]"
         }
-
     }
 }

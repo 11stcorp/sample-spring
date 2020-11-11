@@ -40,3 +40,32 @@ logzio:
 spring:
   profiles: test
 message: ":tada: Server Test"
+
+---
+
+spring:
+  profiles: default
+  jpa:
+    show-sql: true
+
+message: ":tada: Local Server UP"
+
+---
+spring:
+  profiles: dev
+  jpa:
+    show-sql: true
+
+message: ":tada: Development Server UP"
+
+---
+spring:
+  profiles: stage
+
+message: ":tada: Staging Server UP"
+
+---
+spring:
+  profiles: prod
+
+message: ":tada: Production Server UP"
