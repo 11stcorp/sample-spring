@@ -1,9 +1,9 @@
-package com.opsnow.sample.util;
+package com.mycomp.sample.util;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
-import com.opsnow.sample.util.AddressUtil;
+import com.mycomp.sample.util.AddressUtil;
 
 import static org.junit.Assert.assertNotNull;
 

@@ -1,4 +1,4 @@
-package com.opsnow.sample.controller;
+package com.mycomp.sample.controller;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.opsnow.sample.service.AmazonService;
-import com.opsnow.sample.util.PackageUtil;
+import com.mycomp.sample.service.AmazonService;
+import com.mycomp.sample.util.PackageUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;

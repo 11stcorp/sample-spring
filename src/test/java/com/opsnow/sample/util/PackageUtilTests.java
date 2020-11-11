@@ -1,9 +1,9 @@
-package com.opsnow.sample.util;
+package com.mycomp.sample.util;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
-import com.opsnow.sample.util.PackageUtil;
+import com.mycomp.sample.util.PackageUtil;
 
 import java.util.Map;
 

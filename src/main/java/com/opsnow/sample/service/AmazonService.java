@@ -1,4 +1,4 @@
-package com.opsnow.sample.service;
+package com.mycomp.sample.service;
 
 import java.util.List;
 import java.util.Map;

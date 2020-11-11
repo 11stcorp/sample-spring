@@ -1,4 +1,4 @@
-package com.opsnow.sample.domain;
+package com.mycomp.sample.domain;
 
 import com.google.gson.Gson;
 import lombok.Getter;

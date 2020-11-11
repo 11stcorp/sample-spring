@@ -1,6 +1,6 @@
-package com.opsnow.sample.service;
+package com.mycomp.sample.service;
 
-import com.opsnow.sample.domain.Queue;
+import com.mycomp.sample.domain.Queue;
 
 public interface SendService {
 

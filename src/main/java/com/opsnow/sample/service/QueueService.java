@@ -1,7 +1,7 @@
-package com.opsnow.sample.service;
+package com.mycomp.sample.service;
 
 import com.amazonaws.services.sqs.model.Message;
-import com.opsnow.sample.domain.Queue;
+import com.mycomp.sample.domain.Queue;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;

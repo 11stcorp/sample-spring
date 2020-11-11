@@ -1,0 +1,34 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: openjdk8
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --no-include-email --region ap-northeast-2)
+  build:
+    commands:
+      - echo Build Starting on `date`
+      - cd app-tour-front
+      - chmod +x ./gradlew
+      - ./gradlew cleanNpm npm_run_build
+      - cd ..
+      - rm -rf src/main/resources/static/js/tour/vue/modules/*
+      - cp -rf app-tour-front/dist/* src/main/resources/static/js/tour/vue/modules/
+      - chmod +x ./aws/codebuild/codebuildscript.sh
+      - aws/codebuild/codebuildscript.sh
+      - chmod +x ./gradlew
+      - ./gradlew build -x test
+      - docker build -t 446804614856.dkr.ecr.ap-northeast-2.amazonaws.com/11st-app-tour:$TAG_NAME .
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push 446804614856.dkr.ecr.ap-northeast-2.amazonaws.com/11st-app-tour:$TAG_NAME
+      - echo Upload static files to s3 bucket...
+      - aws s3 sync app-tour-front/dist/ s3://app-tour-web-org/js/tour/vue/modules/
+cache:
+  paths:
+    - '/root/.gradle/caches/**/*'

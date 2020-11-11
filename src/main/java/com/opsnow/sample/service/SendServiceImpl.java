@@ -1,7 +1,7 @@
-package com.opsnow.sample.service;
+package com.mycomp.sample.service;
 
 import com.google.android.gcm.server.*;
-import com.opsnow.sample.domain.Queue;
+import com.mycomp.sample.domain.Queue;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.client.RestTemplateBuilder;

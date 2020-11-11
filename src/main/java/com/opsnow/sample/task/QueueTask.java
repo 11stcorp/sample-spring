@@ -1,10 +1,10 @@
-package com.opsnow.sample.task;
+package com.mycomp.sample.task;
 
 import com.amazonaws.services.sqs.model.Message;
 import com.google.gson.Gson;
-import com.opsnow.sample.domain.Queue;
-import com.opsnow.sample.service.QueueService;
-import com.opsnow.sample.service.SendService;
+import com.mycomp.sample.domain.Queue;
+import com.mycomp.sample.service.QueueService;
+import com.mycomp.sample.service.SendService;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

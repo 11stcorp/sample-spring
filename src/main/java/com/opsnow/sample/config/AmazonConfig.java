@@ -1,4 +1,4 @@
-package com.opsnow.sample.config;
+package com.mycomp.sample.config;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSCredentialsProvider;

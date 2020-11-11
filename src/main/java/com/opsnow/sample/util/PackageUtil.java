@@ -1,4 +1,4 @@
-package com.opsnow.sample.util;
+package com.mycomp.sample.util;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

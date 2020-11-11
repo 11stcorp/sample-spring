@@ -1,4 +1,4 @@
-package com.opsnow.sample.service;
+package com.mycomp.sample.service;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.Bucket;

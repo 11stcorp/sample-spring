@@ -1,4 +1,4 @@
-package com.opsnow.sample.listener;
+package com.mycomp.sample.listener;
 
 import in.ashwanthkumar.slack.webhook.SlackMessage;
 import lombok.extern.slf4j.Slf4j;
@@ -8,8 +8,8 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-import com.opsnow.sample.repository.SlackRepository;
-import com.opsnow.sample.util.PackageUtil;
+import com.mycomp.sample.repository.SlackRepository;
+import com.mycomp.sample.util.PackageUtil;
 
 import java.util.Map;
 

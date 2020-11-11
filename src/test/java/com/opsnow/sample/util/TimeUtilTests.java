@@ -1,9 +1,9 @@
-package com.opsnow.sample.util;
+package com.mycomp.sample.util;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
-import com.opsnow.sample.util.TimeUtil;
+import com.mycomp.sample.util.TimeUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

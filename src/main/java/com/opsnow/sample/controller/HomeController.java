@@ -1,4 +1,4 @@
-package com.opsnow.sample.controller;
+package com.mycomp.sample.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

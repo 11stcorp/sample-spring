@@ -1,4 +1,4 @@
-package com.opsnow.sample.repository;
+package com.mycomp.sample.repository;
 
 import in.ashwanthkumar.slack.webhook.Slack;
 import in.ashwanthkumar.slack.webhook.SlackAttachment;

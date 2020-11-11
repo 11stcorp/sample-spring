@@ -50,7 +50,7 @@ spring:
 management:
   endpoints:
     jmx:
-      domain: com.opsnow.sample
+      domain: com.mycomp.sample
 message: ":tada: Development UP"
 
 ---
