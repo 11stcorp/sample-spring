@@ -13,7 +13,7 @@
     <section class="jumbotron text-center">
         <div class="container">
             <h1><img src="https://spring.io/images/OG-Spring.png"></h1>
-            <h3>Hellooooooo NEW CICD</h3>
+            <h3>Hello OLD CICD</h3>
             <h3>${host}</h3>
             <p>${date}</p>
             <p>${message}</p>
