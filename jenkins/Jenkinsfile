@@ -4,7 +4,7 @@ def REPOSITORY_SECRET = "git-common-user"
 
 def CODE_BUILD_PROJECT_NAME = "sample-spring"
 def TAG_NAME = "release"
-def CODE_BUILD_ENV = "[ { TAG_NAME, ${TAG_NAME} }, {BRANCH_NAME, ${BRANCH_NAME} ]"
+// def CODE_BUILD_ENV = "[ { TAG_NAME, ${TAG_NAME} }, {BRANCH_NAME, ${BRANCH_NAME} ]"
 // def THIS_VERSION = "latest"
 // def CODE_BUILD_ENV = "[ { TAG_NAME, ${TAG_NAME} }, { VERSION, ${THIS_VERSION}]"
 
@@ -43,7 +43,7 @@ podTemplate(label: label, containers: [
         }
         stage("Build") {
             container("builder") {
-                butler.aws_codebuild(CODE_BUILD_PROJECT_NAME, CODE_BUILD_ENV)
+                butler.aws_codebuild(CODE_BUILD_PROJECT_NAME, "[ { TAG_NAME, ${TAG_NAME} }, {BRANCH_NAME, ${BRANCH_NAME} ]")
             }
         }
     }
