@@ -30,3 +30,7 @@ template.yaml
 .settings
 .classpath
 .factorypath
+
+.idea*
+
+*.iml
