@@ -43,7 +43,7 @@ podTemplate(label: label, containers: [
         }
         stage("Build") {
             container("builder") {
-                butler.aws_codebuild(CODE_BUILD_PROJECT_NAME, "[ { TAG_NAME, ${TAG_NAME} }, {BRANCH_NAME, ${BRANCH_NAME} ]")
+                butler.aws_codebuild(CODE_BUILD_PROJECT_NAME, "[ { TAG_NAME, ${TAG_NAME} }, {BRANCH_NAME, env.BRANCH_NAME ]")
             }
         }
     }
