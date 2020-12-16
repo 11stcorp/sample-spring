@@ -1,9 +1,12 @@
 def THIS_NAME = "sample-spring"
 def REPOSITORY_URL = "http://bitbucket.11stcorp.com/scm/cloud/sample-spring.git"
 def REPOSITORY_SECRET = "git-common-user"
-def TAG_NAME = "tag"
+
 def CODE_BUILD_PROJECT_NAME = "sample-spring"
-def CODE_BUILD_ENV = "[ { TAG_NAME, ${TAG_NAME} }]"
+def TAG_NAME = "release"
+def CODE_BUILD_ENV = "[ { TAG_NAME, ${TAG_NAME} }, {BRANCH_NAME, ${BRANCH_NAME} ]"
+// def THIS_VERSION = "latest"
+// def CODE_BUILD_ENV = "[ { TAG_NAME, ${TAG_NAME} }, { VERSION, ${THIS_VERSION}]"
 
 @Library("github.com/11stcorp/groovy-modules@main")
 def butler = new com.iist.devops.v1.butler()

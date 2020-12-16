@@ -12,8 +12,11 @@ phases:
     commands:
       - echo Build Starting on `date`
       - mvn clean install
-      - docker build -t 446804614856.dkr.ecr.ap-northeast-2.amazonaws.com/11st-registry:${TAG_NAME} .
+      - docker build -t 11st-registry:${TAG_NAME} .
+      - docker tag 11st-registry:${TAG_NAME} 446804614856.dkr.ecr.ap-northeast-2.amazonaws.com/11st-registry:${TAG_NAME}
       - docker push 446804614856.dkr.ecr.ap-northeast-2.amazonaws.com/11st-registry:${TAG_NAME}
-      - docker tag 446804614856.dkr.ecr.ap-northeast-2.amazonaws.com/11st-registry:${TAG_NAME} 446804614856.dkr.ecr.ap-northeast-2.amazonaws.com/11st-registry:${CODEBUILD_BUILD_NUMBER}
+      - docker tag 11st-registry:${TAG_NAME} 446804614856.dkr.ecr.ap-northeast-2.amazonaws.com/11st-registry:${BRANCH_NAME}
+      - docker push 446804614856.dkr.ecr.ap-northeast-2.amazonaws.com/11st-registry:${BRANCH_NAME}
+      - docker tag 11st-registry:${TAG_NAME} 446804614856.dkr.ecr.ap-northeast-2.amazonaws.com/11st-registry:${CODEBUILD_BUILD_NUMBER}
       - docker push 446804614856.dkr.ecr.ap-northeast-2.amazonaws.com/11st-registry:${CODEBUILD_BUILD_NUMBER}
 
