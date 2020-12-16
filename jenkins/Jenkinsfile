@@ -2,7 +2,7 @@ def THIS_NAME = "sample-spring"
 def REPOSITORY_URL = "http://bitbucket.11stcorp.com/scm/cloud/sample-spring.git"
 def REPOSITORY_SECRET = "git-common-user"
 
-@Library("github.com/11stcorp/groovy-module")
+@Library("github.com/11stcorp/groovy-modules")
 def butler = new com.iist.devops.v1.Butler()
 def label = "worker-${UUID.randomUUID().toString()}"
 
